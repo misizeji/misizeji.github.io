@@ -10,8 +10,8 @@ Much thanks to Thomas Reynolds and Buck Wilson for their help and advice on
 this.
 
 Disabling text selection is made possible by Mathias Bynens
-<http: mathiasbynens.be=""> and his noSelect plugin.
-<https: github.com="" mathiasbynens="" jquery-noselect="">, which is embedded.
+<http://mathiasbynens.be/> and his noSelect plugin.
+<https://github.com/mathiasbynens/jquery-noselect>, which is embedded.
 
 Also, thanks to David Kaneda and Eugene Bond for their contributions to the
 plugin.
@@ -187,15 +187,15 @@ Enjoy!
 	function divSpanWrap($el, $container, method) {
 		switch (method) {
 		case "after":
-			// Result:  <element> <container>
+			// Result:  <element /> <container />
 			$el.after($container);
 			return $el.next();
 		case "before":
-			// Result:  <container> <element>
+			// Result:  <container /> <element />
 			$el.before($container);
 			return $el.prev();
 		case "wrap":
-			// Result:  <container> <element> </element></container>
+			// Result:  <container> <element /> </container>
 			$el.wrap($container);
 			return $el.parent();
 		}
@@ -228,8 +228,8 @@ Enjoy!
 			spanWrap: "wrap"
 		}, divSpanConfig);
 
-		$div = $('<div>');
-		$span = $('<span>');
+		$div = $('<div />');
+		$span = $('<span />');
 
 		// Automatically hide this div/span if the element is hidden.
 		// Do not hide if the element is hidden because a parent is hidden.
@@ -283,7 +283,7 @@ Enjoy!
 			return null;
 		}
 
-		$span = $('<span>').addClass(options.wrapperClass);
+		$span = $('<span />').addClass(options.wrapperClass);
 		$span = divSpanWrap($el, $span, "wrap");
 		return $span;
 	}
@@ -330,7 +330,7 @@ Enjoy!
 			return "";
 		}
 
-		return $('<span>').text(text).html();
+		return $('<span />').text(text).html();
 	}
 
 	/**
@@ -371,7 +371,283 @@ Enjoy!
 
 		elSize = attrOrProp($el, "size");
 
-		if (!elSize || elSize <= 1)="" {="" return="" false;="" }="" true;="" **="" *="" meaningless="" utility="" function.="" used="" mostly="" for="" improving="" minification.="" @return="" false="" function="" returnfalse()="" noselect="" plugin,="" very="" slightly="" modified="" http:="" mths.be="" v1.0.3="" @param="" jquery="" $elem="" element="" that="" we="" don't="" want="" to="" select="" object="" options="" uniform="" the="" noselect($elem,="" options)="" var="" none="none" ;="" bindmany($elem,="" options,="" 'selectstart="" dragstart="" mousedown':="" returnfalse="" });="" $elem.css({="" mozuserselect:="" none,="" msuserselect:="" webkituserselect:="" userselect:="" updates="" filename="" tag="" based="" on="" value="" of="" real="" input="" element.="" $el="" actual="" form="" $filenametag="" span="" div="" update="" this="" setfilename($el,="" $filenametag,="" if="" (filename="==" "")="" else="" -="" 1)];="" $filenametag.text(filename);="" from="" swap="" some="" css="" values,="" run="" a="" callback,="" then="" restore="" css.="" pass="" jslint="" and="" handle="" undefined="" values="" with="" 'use="" strict'.="" newcss="" out="" callback="" swap($elements,="" newcss,="" callback)="" restore,="" item;="" $elements.each(function="" ()="" name;="" (name="" in="" newcss)="" (object.prototype.hasownproperty.call(newcss,="" name))="" restore.push({="" el:="" this,="" name:="" name,="" old:="" this.style[name]="" callback();="" while="" (restore.length)="" item="restore.pop();" item.el.style[item.name]="item.old;" browser="" doesn't="" provide="" sizes="" elements="" are="" not="" visible.="" will="" clone="" an="" add="" it="" dom="" calculations.="" string="" method="" sizinginvisible($el,="" targets;="" wish="" target="" ourselves="" any="" parents="" as="" long="" they="" visible="" targets="$el.parents();" targets.push($el[0]);="" swap(targets,="" visibility:="" "hidden",="" display:="" "block",="" position:="" "absolute"="" },="" callback);="" standard="" way="" unwrap="" combination="" preserve="" generated="" perform="" given="" work="" unwrapunwrapunbindfunction($el,="" $el.unwrap().unwrap().unbind(options.eventnamespace);="" };="" allowstyling="true," ie6="" or="" other="" unsupported="" browsers="" highcontrasttest="false," was="" high="" contrast="" test="" ran?="" uniformhandlers="[" objects="" take="" care="" "unification"="" buttons="" match:="" ($el)="" $el.is("a,="" button,="" :submit,="" :reset,="" input[type="button" ]");="" apply:="" ($el,="" $div,="" defaultspanhtml,="" ds,="" gethtml,="" doingclickevent;="" defaultspanhtml="options.submitDefaultHtml;" ($el.is(":reset"))="" ($el.is("a,="" button"))="" use="" html="" inside="" gethtml="function" $el.html()="" ||="" defaultspanhtml;="" property="" htmlify(attrorprop($el,="" "value"))="" ds="divSpan($el," divclass:="" options.buttonclass,="" spanhtml:="" gethtml(),="" $div="ds.div;" bindui($el,="" options);="" doingclickevent="false;" bindmany($div,="" "click="" touchend":="" ev,="" res,="" target,="" href;="" (doingclickevent)="" return;="" ($el.is(':disabled'))="" ($el[0].dispatchevent)="" ev="document.createEvent("MouseEvents");" ev.initevent("click",="" true,="" true);="" res="$el[0].dispatchEvent(ev);" ($el.is('a')="" &&="" res)="" 'target');="" href="attrOrProp($el," 'href');="" (!target="" '_self')="" document.location.href="href;" window.open(href,="" target);="" $el.click();="" noselect($div,="" remove:="" move="" $div.after($el);="" remove="" $div.remove();="" unbind="" events="" $el.unbind(options.eventnamespace);="" $el;="" update:="" classclearstandard($div,="" classupdatedisabled($div,="" $el,="" $el.detach();="" ds.span.html(gethtml()).append($el);="" checkboxes="" $el.is(":checkbox");="" $span;="" options.checkboxclass="" $span="ds.span;" focus="" classes,="" toggling,="" active,="" etc.="" bindmany($el,="" classupdatechecked($span,="" options),="" $span.removeclass(options.checkedclass);="" file="" selection="" uploads="" $el.is(":file");="" $filename,="" $button;="" "span"="" is="" button="" options.fileclass,="" spanclass:="" options.filebuttonclass,="" options.filebuttonhtml,="" spanwrap:="" "after"="" $button="ds.span;" $filename="$("<span">").html(options.fileDefaultHtml);
+		if (!elSize || elSize <= 1) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Meaningless utility function.  Used mostly for improving minification.
+	 *
+	 * @return false
+	 */
+	function returnFalse() {
+		return false;
+	}
+
+	/**
+	 * noSelect plugin, very slightly modified
+	 * http://mths.be/noselect v1.0.3
+	 *
+	 * @param jQuery $elem Element that we don't want to select
+	 * @param Object options Uniform options for the element
+	 */
+	function noSelect($elem, options) {
+		var none = 'none';
+		bindMany($elem, options, {
+			'selectstart dragstart mousedown': returnFalse
+		});
+
+		$elem.css({
+			MozUserSelect: none,
+			msUserSelect: none,
+			webkitUserSelect: none,
+			userSelect: none
+		});
+	}
+
+	/**
+	 * Updates the filename tag based on the value of the real input
+	 * element.
+	 *
+	 * @param jQuery $el Actual form element
+	 * @param jQuery $filenameTag Span/div to update
+	 * @param Object options Uniform options for this element
+	 */
+	function setFilename($el, $filenameTag, options) {
+		var filename = $el.val();
+
+		if (filename === "") {
+			filename = options.fileDefaultHtml;
+		} else {
+			filename = filename.split(/[\/\\]+/);
+			filename = filename[(filename.length - 1)];
+		}
+
+		$filenameTag.text(filename);
+	}
+
+
+	/**
+	 * Function from jQuery to swap some CSS values, run a callback,
+	 * then restore the CSS.  Modified to pass JSLint and handle undefined
+	 * values with 'use strict'.
+	 *
+	 * @param jQuery $el Element
+	 * @param object newCss CSS values to swap out
+	 * @param Function callback Function to run
+	 */
+	function swap($elements, newCss, callback) {
+		var restore, item;
+
+		restore = [];
+
+		$elements.each(function () {
+			var name;
+
+			for (name in newCss) {
+				if (Object.prototype.hasOwnProperty.call(newCss, name)) {
+					restore.push({
+						el: this,
+						name: name,
+						old: this.style[name]
+					});
+
+					this.style[name] = newCss[name];
+				}
+			}
+		});
+
+		callback();
+
+		while (restore.length) {
+			item = restore.pop();
+			item.el.style[item.name] = item.old;
+		}
+	}
+
+
+	/**
+	 * The browser doesn't provide sizes of elements that are not visible.
+	 * This will clone an element and add it to the DOM for calculations.
+	 *
+	 * @param jQuery $el
+	 * @param String method
+	 */
+	function sizingInvisible($el, callback) {
+		var targets;
+
+		// We wish to target ourselves and any parents as long as
+		// they are not visible
+		targets = $el.parents();
+		targets.push($el[0]);
+		targets = targets.not(':visible');
+		swap(targets, {
+			visibility: "hidden",
+			display: "block",
+			position: "absolute"
+		}, callback);
+	}
+
+
+	/**
+	 * Standard way to unwrap the div/span combination from an element
+	 *
+	 * @param jQuery $el Element that we wish to preserve
+	 * @param Object options Uniform options for the element
+	 * @return Function This generated function will perform the given work
+	 */
+	function unwrapUnwrapUnbindFunction($el, options) {
+		return function () {
+			$el.unwrap().unwrap().unbind(options.eventNamespace);
+		};
+	}
+
+	var allowStyling = true,  // False if IE6 or other unsupported browsers
+		highContrastTest = false,  // Was the high contrast test ran?
+		uniformHandlers = [  // Objects that take care of "unification"
+			{
+				// Buttons
+				match: function ($el) {
+					return $el.is("a, button, :submit, :reset, input[type='button']");
+				},
+				apply: function ($el, options) {
+					var $div, defaultSpanHtml, ds, getHtml, doingClickEvent;
+					defaultSpanHtml = options.submitDefaultHtml;
+
+					if ($el.is(":reset")) {
+						defaultSpanHtml = options.resetDefaultHtml;
+					}
+
+					if ($el.is("a, button")) {
+						// Use the HTML inside the tag
+						getHtml = function () {
+							return $el.html() || defaultSpanHtml;
+						};
+					} else {
+						// Use the value property of the element
+						getHtml = function () {
+							return htmlify(attrOrProp($el, "value")) || defaultSpanHtml;
+						};
+					}
+
+					ds = divSpan($el, options, {
+						divClass: options.buttonClass,
+						spanHtml: getHtml(),
+					});
+					$div = ds.div;
+					bindUi($el, $div, options);
+					doingClickEvent = false;
+					bindMany($div, options, {
+						"click touchend": function () {
+							var ev, res, target, href;
+
+							if (doingClickEvent) {
+								return;
+							}
+
+							if ($el.is(':disabled')) {
+								return;
+							}
+
+							doingClickEvent = true;
+
+							if ($el[0].dispatchEvent) {
+								ev = document.createEvent("MouseEvents");
+								ev.initEvent("click", true, true);
+								res = $el[0].dispatchEvent(ev);
+
+								if ($el.is('a') && res) {
+									target = attrOrProp($el, 'target');
+									href = attrOrProp($el, 'href');
+
+									if (!target || target === '_self') {
+										document.location.href = href;
+									} else {
+										window.open(href, target);
+									}
+								}
+							} else {
+								$el.click();
+							}
+
+							doingClickEvent = false;
+						}
+					});
+					noSelect($div, options);
+					return {
+						remove: function () {
+							// Move $el out
+							$div.after($el);
+
+							// Remove div and span
+							$div.remove();
+
+							// Unbind events
+							$el.unbind(options.eventNamespace);
+							return $el;
+						},
+						update: function () {
+							classClearStandard($div, options);
+							classUpdateDisabled($div, $el, options);
+							$el.detach();
+							ds.span.html(getHtml()).append($el);
+						}
+					};
+				}
+			},
+			{
+				// Checkboxes
+				match: function ($el) {
+					return $el.is(":checkbox");
+				},
+				apply: function ($el, options) {
+					var ds, $div, $span;
+					ds = divSpan($el, options, {
+						divClass: options.checkboxClass
+					});
+					$div = ds.div;
+					$span = ds.span;
+
+					// Add focus classes, toggling, active, etc.
+					bindUi($el, $div, options);
+					bindMany($el, options, {
+						"click touchend": function () {
+							classUpdateChecked($span, $el, options);
+						}
+					});
+					classUpdateChecked($span, $el, options);
+					return {
+						remove: unwrapUnwrapUnbindFunction($el, options),
+						update: function () {
+							classClearStandard($div, options);
+							$span.removeClass(options.checkedClass);
+							classUpdateChecked($span, $el, options);
+							classUpdateDisabled($div, $el, options);
+						}
+					};
+				}
+			},
+			{
+				// File selection / uploads
+				match: function ($el) {
+					return $el.is(":file");
+				},
+				apply: function ($el, options) {
+					var ds, $div, $filename, $button;
+
+					// The "span" is the button
+					ds = divSpan($el, options, {
+						divClass: options.fileClass,
+						spanClass: options.fileButtonClass,
+						spanHtml: options.fileButtonHtml,
+						spanWrap: "after"
+					});
+					$div = ds.div;
+					$button = ds.span;
+					$filename = $("<span />").html(options.fileDefaultHtml);
 					$filename.addClass(options.filenameClass);
 					$filename = divSpanWrap($el, $filename, "after");
 
@@ -790,4 +1066,3 @@ Enjoy!
 		});
 	};
 }(jQuery));
-</=></span></div></span></span></div></element></container></container></element></https:></http:>

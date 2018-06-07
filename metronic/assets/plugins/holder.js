@@ -150,7 +150,86 @@ function text_size(width, height, template) {
 }
 
 var svg_el = (function(){
-	//Prevent IE <9 2000="" from="" initializing="" svg="" renderer="" if(!window.xmlserializer)="" return;="" var="" serializer="new" xmlserializer();="" svg_ns="http://www.w3.org/2000/svg" "svg");="" ie="" throws="" an="" exception="" if="" this="" is="" set="" and="" chrome="" requires="" it="" to="" be="" if(svg.webkitmatchesselector){="" svg.setattribute("xmlns",="" "http:="" www.w3.org="" svg")="" }="" bg_el="document.createElementNS(svg_ns," "rect")="" text_el="document.createElementNS(svg_ns," "text")="" textnode_el="document.createTextNode(null)" text_el.setattribute("text-anchor",="" "middle")="" text_el.appendchild(textnode_el)="" svg.appendchild(bg_el)="" svg.appendchild(text_el)="" return="" function(props){="" svg.setattribute("width",props.width);="" svg.setattribute("height",="" props.height);="" bg_el.setattribute("width",="" props.width);="" bg_el.setattribute("height",="" bg_el.setattribute("fill",="" props.template.background);="" text_el.setattribute("x",="" props.width="" 2)="" text_el.setattribute("y",="" props.height="" textnode_el.nodevalue="props.text" text_el.setattribute("style",="" css_properties({="" "fill":="" props.template.foreground,="" "font-weight":="" "bold",="" "font-size":="" props.text_height+"px",="" "font-family":props.font,="" "dominant-baseline":"central"="" }))="" serializer.serializetostring(svg)="" })()="" function="" css_properties(props){="" ret="[];" for(p="" in="" props){="" if(props.hasownproperty(p)){="" ret.push(p+":"+props[p])="" ret.join(";")="" draw_canvas(args)="" {="" ctx="args.ctx," dimensions="args.dimensions," template="args.template," ratio="args.ratio," holder="args.holder," literal="holder.textmode" =="literal" ,="" exact="holder.textmode" ;="" ts="text_size(dimensions.width," dimensions.height,="" template);="" text_height="ts.height;" width="dimensions.width" *="" ratio,="" height="dimensions.height" ratio;="" font="template.font" ?="" template.font="" :="" "arial,helvetica,sans-serif";="" canvas.width="width;" canvas.height="height;" ctx.textalign="center" ctx.textbaseline="middle" ctx.fillstyle="template.background;" ctx.fillrect(0,="" 0,="" width,="" height);="" ctx.font="bold " +="" "px="" "="" font;="" text="template.text" template.text="" (math.floor(dimensions.width)="" "x"="" math.floor(dimensions.height));="" (literal)="" dimensions.height;="" else="" if(exact="" &&="" holder.exact_dimensions){="" text_width="ctx.measureText(text).width;" (text_width="">= 0.75) {
+	//Prevent IE <9 from initializing SVG renderer
+	if(!window.XMLSerializer) return;
+	var serializer = new XMLSerializer();
+	var svg_ns = "http://www.w3.org/2000/svg"
+	var svg = document.createElementNS(svg_ns, "svg");
+	//IE throws an exception if this is set and Chrome requires it to be set
+	if(svg.webkitMatchesSelector){
+		svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
+	}
+	var bg_el = document.createElementNS(svg_ns, "rect")
+	var text_el = document.createElementNS(svg_ns, "text")
+	var textnode_el = document.createTextNode(null)
+	text_el.setAttribute("text-anchor", "middle")
+	text_el.appendChild(textnode_el)
+	svg.appendChild(bg_el)
+	svg.appendChild(text_el)
+
+	return function(props){
+		svg.setAttribute("width",props.width);
+		svg.setAttribute("height", props.height);
+		bg_el.setAttribute("width", props.width);
+		bg_el.setAttribute("height", props.height);
+		bg_el.setAttribute("fill", props.template.background);
+		text_el.setAttribute("x", props.width/2)
+		text_el.setAttribute("y", props.height/2)
+		textnode_el.nodeValue=props.text
+		text_el.setAttribute("style", css_properties({
+		"fill": props.template.foreground,
+		"font-weight": "bold",
+		"font-size": props.text_height+"px",
+		"font-family":props.font,
+		"dominant-baseline":"central"
+		}))
+		return serializer.serializeToString(svg)
+	}
+})()
+
+function css_properties(props){
+	var ret = [];
+	for(p in props){
+		if(props.hasOwnProperty(p)){
+			ret.push(p+":"+props[p])
+		}
+	}
+	return ret.join(";")
+}
+
+function draw_canvas(args) {
+	var ctx = args.ctx,
+		dimensions = args.dimensions,
+		template = args.template,
+		ratio = args.ratio,
+		holder = args.holder,
+		literal = holder.textmode == "literal",
+		exact = holder.textmode == "exact";
+
+	var ts = text_size(dimensions.width, dimensions.height, template);
+	var text_height = ts.height;
+	var width = dimensions.width * ratio,
+		height = dimensions.height * ratio;
+	var font = template.font ? template.font : "Arial,Helvetica,sans-serif";
+	canvas.width = width;
+	canvas.height = height;
+	ctx.textAlign = "center";
+	ctx.textBaseline = "middle";
+	ctx.fillStyle = template.background;
+	ctx.fillRect(0, 0, width, height);
+	ctx.fillStyle = template.foreground;
+	ctx.font = "bold " + text_height + "px " + font;
+	var text = template.text ? template.text : (Math.floor(dimensions.width) + "x" + Math.floor(dimensions.height));
+	if (literal) {
+		var dimensions = holder.dimensions;
+		text = dimensions.width + "x" + dimensions.height;
+	}
+	else if(exact && holder.exact_dimensions){
+		var dimensions = holder.exact_dimensions;
+		text = (Math.floor(dimensions.width) + "x" + Math.floor(dimensions.height));
+	}
+	var text_width = ctx.measureText(text).width;
+	if (text_width / width >= 0.75) {
 		text_height = Math.floor(text_height * 0.75 * (width / text_width));
 	}
 	//Resetting font size if necessary
@@ -537,7 +616,43 @@ if (typeof define === "function" && define.amd) {
 }
 
 //github.com/davidchambers/Base64.js
-(function(){function t(t){this.message=t}var e="undefined"!=typeof exports?exports:this,r="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";t.prototype=Error(),t.prototype.name="InvalidCharacterError",e.btoa||(e.btoa=function(e){for(var o,n,a=0,i=r,c="";e.charAt(0|a)||(i="=",a%1);c+=i.charAt(63&o>>8-8*(a%1))){if(n=e.charCodeAt(a+=.75),n>255)throw new t("'btoa' failed");o=o<<8|n}return c}),e.atob||(e.atob="function(e){if(e=e.replace(/=+$/,""),1==e.length%4)throw" new="" t("'atob'="" failed");for(var="" o,n,a="0,i=0,c="";n=e.charAt(i++);~n&&(o=a%4?64*o+n:n,a++%4)?c+=String.fromCharCode(255&o">>(6&-2*a)):0)n=r.indexOf(n);return c})})();
+(function(){function t(t){this.message=t}var e="undefined"!=typeof exports?exports:this,r="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";t.prototype=Error(),t.prototype.name="InvalidCharacterError",e.btoa||(e.btoa=function(e){for(var o,n,a=0,i=r,c="";e.charAt(0|a)||(i="=",a%1);c+=i.charAt(63&o>>8-8*(a%1))){if(n=e.charCodeAt(a+=.75),n>255)throw new t("'btoa' failed");o=o<<8|n}return c}),e.atob||(e.atob=function(e){if(e=e.replace(/=+$/,""),1==e.length%4)throw new t("'atob' failed");for(var o,n,a=0,i=0,c="";n=e.charAt(i++);~n&&(o=a%4?64*o+n:n,a++%4)?c+=String.fromCharCode(255&o>>(6&-2*a)):0)n=r.indexOf(n);return c})})();
 
 //getElementsByClassName polyfill
-document.getElementsByClassName||(document.getElementsByClassName=function(e){var t=document,n,r,i,s=[];if(t.querySelectorAll)return t.querySelectorAll("."+e);if(t.evaluate){r=".//*[contains(concat(' ', @class, ' '), ' "+e+" ')]",n=t.evaluate(r,t,null,0,null);while(i=n.iterateNext())s.push(i)}else{n=t.getElementsByTagName("*"),r=new RegExp("(^|\\s)"+e+"(\\s|$)");for(i=0;i</8|n}return></9>
+document.getElementsByClassName||(document.getElementsByClassName=function(e){var t=document,n,r,i,s=[];if(t.querySelectorAll)return t.querySelectorAll("."+e);if(t.evaluate){r=".//*[contains(concat(' ', @class, ' '), ' "+e+" ')]",n=t.evaluate(r,t,null,0,null);while(i=n.iterateNext())s.push(i)}else{n=t.getElementsByTagName("*"),r=new RegExp("(^|\\s)"+e+"(\\s|$)");for(i=0;i<n.length;i++)r.test(n[i].className)&&s.push(n[i])}return s})
+
+//getComputedStyle polyfill
+window.getComputedStyle||(window.getComputedStyle=function(e){return this.el=e,this.getPropertyValue=function(t){var n=/(\-([a-z]){1})/g;return t=="float"&&(t="styleFloat"),n.test(t)&&(t=t.replace(n,function(){return arguments[2].toUpperCase()})),e.currentStyle[t]?e.currentStyle[t]:null},this})
+
+//http://javascript.nwbox.com/ContentLoaded by Diego Perini with modifications
+function contentLoaded(n,t){var l="complete",s="readystatechange",u=!1,h=u,c=!0,i=n.document,a=i.documentElement,e=i.addEventListener?"addEventListener":"attachEvent",v=i.addEventListener?"removeEventListener":"detachEvent",f=i.addEventListener?"":"on",r=function(e){(e.type!=s||i.readyState==l)&&((e.type=="load"?n:i)[v](f+e.type,r,u),!h&&(h=!0)&&t.call(n,null))},o=function(){try{a.doScroll("left")}catch(n){setTimeout(o,50);return}r("poll")};if(i.readyState==l)t.call(n,"lazy");else{if(i.createEventObject&&a.doScroll){try{c=!n.frameElement}catch(y){}c&&o()}i[e](f+"DOMContentLoaded",r,u),i[e](f+s,r,u),n[e](f+"load",r,u)}}
+
+//https://gist.github.com/991057 by Jed Schmidt with modifications
+function selector(a,b){var a=a.match(/^(\W)?(.*)/),b=b||document,c=b["getElement"+(a[1]?"#"==a[1]?"ById":"sByClassName":"sByTagName")],d=c.call(b,a[2]),e=[];return null!==d&&(e=d.length||0===d.length?d:[d]),e}
+
+//shallow object property extend
+function extend(a,b){
+	var c={};
+	for(var i in a){
+		if(a.hasOwnProperty(i)){
+			c[i]=a[i];
+		}
+	}
+	for(var i in b){
+		if(b.hasOwnProperty(i)){
+			c[i]=b[i];
+		}
+	}
+	return c
+}
+
+//hasOwnProperty polyfill
+if (!Object.prototype.hasOwnProperty)
+    /*jshint -W001, -W103 */
+    Object.prototype.hasOwnProperty = function(prop) {
+		var proto = this.__proto__ || this.constructor.prototype;
+		return (prop in this) && (!(prop in proto) || proto[prop] !== this[prop]);
+	}
+    /*jshint +W001, +W103 */
+
+})(Holder, window);
