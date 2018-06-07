@@ -111,61 +111,7 @@ function init() {
      * on some pages. e.g.: html, body { height: 100% }
      */
     else if (scrollHeight > windowHeight &&
-            (body.offsetHeight <= windowHeight || 
-             html.offsetHeight <= windowHeight)) {
- 
-        // DOMChange (throttle): fix height
-        var pending = false;
-        var refresh = function () {
-            if (!pending && html.scrollHeight != document.height) {
-                pending = true; // add a new pending action
-                setTimeout(function () {
-                    html.style.height = document.height + 'px';
-                    pending = false;
-                }, 500); // act rarely to stay fast
-            }
-        };
-        html.style.height = 'auto';
-        setTimeout(refresh, 10);
- 
-        // clearfix
-        if (root.offsetHeight <= windowHeight) {
-            var underlay = document.createElement("div"); 	
-            underlay.style.clear = "both";
-            body.appendChild(underlay);
-        }
-    }
- 
-    // disable fixed background
-    if (!options.fixedBackground && !isExcluded) {
-        body.style.backgroundAttachment = "scroll";
-        html.style.backgroundAttachment = "scroll";
-    }
-}
- 
- 
-/************************************************
- * SCROLLING 
- ************************************************/
- 
-var que = [];
-var pending = false;
-var lastScroll = +new Date;
- 
-/**
- * Pushes scroll actions to the scrolling queue.
- */
-function scrollArray(elem, left, top, delay) {
-    
-    delay || (delay = 1000);
-    directionCheck(left, top);
- 
-    if (options.accelerationMax != 1) {
-        var now = +new Date;
-        var elapsed = now - lastScroll;
-        if (elapsed < options.accelerationDelta) {
-            var factor = (1 + (30 / elapsed)) / 2;
-            if (factor > 1) {
+            (body.offsetHeight <= windowheight="" ||="" html.offsetheight="" <="windowHeight))" {="" domchange="" (throttle):="" fix="" height="" var="" pending="false;" refresh="function" ()="" if="" (!pending="" &&="" html.scrollheight="" !="document.height)" add="" a="" new="" action="" settimeout(function="" html.style.height="document.height" +="" 'px';="" },="" 500);="" act="" rarely="" to="" stay="" fast="" }="" };="" ;="" settimeout(refresh,="" 10);="" clearfix="" (root.offsetheight="" underlay="document.createElement("div");" underlay.style.clear="both" body.appendchild(underlay);="" disable="" fixed="" background="" (!options.fixedbackground="" !isexcluded)="" body.style.backgroundattachment="scroll" html.style.backgroundattachment="scroll" ************************************************="" *="" scrolling="" que="[];" lastscroll="+new" date;="" **="" pushes="" scroll="" actions="" the="" queue.="" function="" scrollarray(elem,="" left,="" top,="" delay)="" delay="" (delay="1000);" directioncheck(left,="" top);="" (options.accelerationmax="" now="+new" elapsed="now" -="" lastscroll;="" (elapsed="" options.accelerationdelta)="" factor="(1" (30="" elapsed))="" 2;="" (factor=""> 1) {
                 factor = Math.min(factor, options.accelerationMax);
                 left *= factor;
                 top  *= factor;
@@ -512,25 +458,4 @@ function pulse_(x) {
  
 function pulse(x) {
     if (x >= 1) return 1;
-    if (x <= 0) return 0;
- 
-    if (options.pulseNormalize == 1) {
-        options.pulseNormalize /= pulse_(1);
-    }
-    return pulse_(x);
-}
- 
-var isChrome = /chrome/i.test(window.navigator.userAgent);
-var wheelEvent = null;
-if ("onwheel" in document.createElement("div"))
-	wheelEvent = "wheel";
-else if ("onmousewheel" in document.createElement("div"))
-	wheelEvent = "mousewheel";
- 
-if (wheelEvent && isChrome) {
-	addEvent(wheelEvent, wheel);
-	addEvent("mousedown", mousedown);
-	addEvent("load", init);
-}
- 
-})();
+    if (x </=>

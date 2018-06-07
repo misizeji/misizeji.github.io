@@ -2068,41 +2068,7 @@ if (!google.maps.Polygon.prototype.containsLatLng) {
 if (!google.maps.Circle.prototype.containsLatLng) {
   google.maps.Circle.prototype.containsLatLng = function(latLng) {
     if (google.maps.geometry) {
-      return google.maps.geometry.spherical.computeDistanceBetween(this.getCenter(), latLng) <= this.getRadius();
-    }
-    else {
-      return true;
-    }
-  };
-}
-
-google.maps.LatLngBounds.prototype.containsLatLng = function(latLng) {
-  return this.contains(latLng);
-};
-
-google.maps.Marker.prototype.setFences = function(fences) {
-  this.fences = fences;
-};
-
-google.maps.Marker.prototype.addFence = function(fence) {
-  this.fences.push(fence);
-};
-
-google.maps.Marker.prototype.getId = function() {
-  return this['__gm_id'];
-};
-
-//==========================
-// Array indexOf
-// https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf
-if (!Array.prototype.indexOf) {
-  Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
-      "use strict";
-      if (this == null) {
-          throw new TypeError();
-      }
-      var t = Object(this);
-      var len = t.length >>> 0;
+      return google.maps.geometry.spherical.computeDistanceBetween(this.getCenter(), latLng) <= this.getradius();="" }="" else="" {="" return="" true;="" };="" google.maps.latlngbounds.prototype.containslatlng="function(latLng)" this.contains(latlng);="" google.maps.marker.prototype.setfences="function(fences)" this.fences="fences;" google.maps.marker.prototype.addfence="function(fence)" this.fences.push(fence);="" google.maps.marker.prototype.getid="function()" this['__gm_id'];="" =="========================" array="" indexof="" https:="" developer.mozilla.org="" en-us="" docs="" javascript="" reference="" global_objects="" if="" (!array.prototype.indexof)="" array.prototype.indexof="function" (searchelement="" *,="" fromindex="" *="" )="" "use="" strict";="" (this="=" null)="" throw="" new="" typeerror();="" var="" t="Object(this);" len="t.length">>> 0;
       if (len === 0) {
           return -1;
       }
@@ -2130,3 +2096,4 @@ if (!Array.prototype.indexOf) {
   
 return GMaps;
 }));
+</=>
