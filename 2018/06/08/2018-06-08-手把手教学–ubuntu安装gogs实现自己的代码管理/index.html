@@ -7,18 +7,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Impress Employers at Infosessions | JITAO</title>
+  <title>JITAO</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta name="description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件    安装git，mysql-server 安装git 并验证是否已经安装 git sudo apt-get">
-<meta name="keywords" content="C&#x2F;C++,Linux">
+  <meta name="description" content="layout: posttitle: set up gogs git server on Ubuntudate: 2018-06-08thumbnail: https://s3.amazonaws.com/ptsteadman-images/info2.jpgcategory: gittags:   git Linuxlede: “install the most simple git serv">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Impress Employers at Infosessions">
-<meta property="og:url" content="https://jitao90s.com/2015/05/02/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/index.html">
+<meta property="og:title" content="JITAO">
+<meta property="og:url" content="https://jitao90s.com/2018/06/08/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/index.html">
 <meta property="og:site_name" content="JITAO">
-<meta property="og:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件    安装git，mysql-server 安装git 并验证是否已经安装 git sudo apt-get">
+<meta property="og:description" content="layout: posttitle: set up gogs git server on Ubuntudate: 2018-06-08thumbnail: https://s3.amazonaws.com/ptsteadman-images/info2.jpgcategory: gittags:   git Linuxlede: “install the most simple git serv">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://img.blog.csdn.net/20170711160332844?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170711160652437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -38,10 +37,10 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20170711164517687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170711165727645?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170711165754704?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-06-08T08:35:30.322Z">
+<meta property="og:updated_time" content="2018-06-08T08:57:06.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Impress Employers at Infosessions">
-<meta name="twitter:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件    安装git，mysql-server 安装git 并验证是否已经安装 git sudo apt-get">
+<meta name="twitter:title" content="JITAO">
+<meta name="twitter:description" content="layout: posttitle: set up gogs git server on Ubuntudate: 2018-06-08thumbnail: https://s3.amazonaws.com/ptsteadman-images/info2.jpgcategory: gittags:   git Linuxlede: “install the most simple git serv">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170711160332844?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="JITAO" type="application/atom+xml">
@@ -160,10 +159,6 @@
   </ul>
   <section id="main">
     
-    <h2 itemprop="name">
-      <a class="article-title" href="/2015/05/02/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/">Impress Employers at Infosessions</a>
-    </h2>
-
 
     <div class="row">
 <div class="col-md-9 col-sm-9 blog-posts">
@@ -173,43 +168,16 @@
   <div class="article-inner">
     
     
-    <header class="article-header">
-      <ul class="blog-info">
-	<li><i class="fa fa-user"></i> Ji Tao</li>
-	<li><i class="fa fa-calendar"></i>
-	  <time datetime="2015-05-01T16:00:00.000Z" itemprop="datePublished">2015/05/02</time>
-
-	</li>
-	<li class="hidden-xs"><i class="fa fa-comments"></i>
-	  <a href="https://jitao90s.com/2015/05/02/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/#disqus_thread" class="article-comment-link">Comments</a>
-	</li>
-	<li class="hidden-xs"><i class="fa fa-tags"></i> 
-	  
-  
-    <a href="/tags/C-C/" title="C/C++">C/C++</a>,
-  
-    <a href="/tags/Linux/" title="Linux">Linux</a>
-  
-
-
-	</li>
-      </ul>
-      
-  <div class="article-category">
-    
-    Category: 
-    
-    Categories:
-    <a class="article-category-link" href="/categories/Humor/">Humor</a>
-  </div>
-  <br>
-
-
-    </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>安装其实很简单，总共分为以下几步：</p>
+        <hr>
+<p>layout: post<br>title: set up gogs git server on Ubuntu<br>date: 2018-06-08<br>thumbnail: <a href="https://s3.amazonaws.com/ptsteadman-images/info2.jpg" target="_blank" rel="noopener">https://s3.amazonaws.com/ptsteadman-images/info2.jpg</a><br>category: git<br>tags: </p>
+<ul>
+<li>git</li>
+<li>Linux<br>lede: “install the most simple git server with web management system that based on Go language. simple and powerful”</li>
+</ul>
+<hr>
+<p>安装其实很简单，总共分为以下几步：</p>
 <ul>
 <li><strong>更新升级</strong></li>
 <li><strong>安装git，mysql-server</strong></li>
@@ -258,7 +226,14 @@
 <p>注意这里一定要注意路径的问题，便于能找到脚本执行<br>mysql -u root -p &lt; mysql.sql</p>
 </blockquote>
 <p><img src="http://img.blog.csdn.net/20170711163402735?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="初始化数据库mysql"></p>
-<p>##建立需要使用的新用户名和新数据库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mysql -u root -p</span><br><span class="line"><span class="meta">&gt;</span> # （输入密码）</span><br><span class="line"><span class="meta">&gt;</span> create user 'gogs'@'localhost' identified by '密码';</span><br><span class="line"><span class="meta">&gt;</span> grant all privileges on gogs.* to 'gogs'@'localhost';</span><br><span class="line"><span class="meta">&gt;</span> flush privileges;</span><br><span class="line"><span class="meta">&gt;</span> exit;</span><br></pre></td></tr></table></figure></p>
+<p>##建立需要使用的新用户名和新数据库</p>
+<pre><code class="shell"><span class="meta">$</span> mysql -u root -p
+<span class="meta">&gt;</span> # （输入密码）
+<span class="meta">&gt;</span> create user 'gogs'@'localhost' identified by '密码';
+<span class="meta">&gt;</span> grant all privileges on gogs.* to 'gogs'@'localhost';
+<span class="meta">&gt;</span> flush privileges;
+<span class="meta">&gt;</span> exit;
+</code></pre>
 <p>##运行配置</p>
 <blockquote>
 <p>初次安装可以直接在安装的Ubuntu上打开浏览器输入<br><a href="http://localhost:3000/install" target="_blank" rel="noopener">http://localhost:3000/install</a><br>这样就能配置自己新建好的数据库账号密码，以及配置此代码管理系统的邮件服务，是否禁止自主注册，以及设定管理员账号</p>
@@ -288,19 +263,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/01/02/2016-01-02-Notes-On-Creating-A-Hexo-Theme/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Notes On Creating A Hexo Theme
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/04/01/2015-04-01-NGINX-Static-Locations/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/01/02/2016-01-02-Notes-On-Creating-A-Hexo-Theme/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Static NGINX Locations</div>
+      <div class="article-nav-title">Notes On Creating A Hexo Theme</div>
     </a>
   
 </nav>
@@ -338,7 +304,7 @@
 	</li>
       
 	<li>
-	  <a href="/categories/Humor/">Humor (1)</a>
+	  <a href="/categories/Humor/">Humor (0)</a>
 	</li>
       
     </ul>
@@ -355,7 +321,7 @@
   <div class="widget-wrap">
     <div class="widget">
       
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/"><i class='fa fa-tags'></i>C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/"><i class='fa fa-tags'></i>C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design/"><i class='fa fa-tags'></i>Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/"><i class='fa fa-tags'></i>Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/"><i class='fa fa-tags'></i>Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/"><i class='fa fa-tags'></i>Visual Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/"><i class='fa fa-tags'></i>Web Development</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/"><i class='fa fa-tags'></i>C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design/"><i class='fa fa-tags'></i>Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/"><i class='fa fa-tags'></i>Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/"><i class='fa fa-tags'></i>Visual Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/"><i class='fa fa-tags'></i>Web Development</a></li></ul>
     </div>
   </div>
 
