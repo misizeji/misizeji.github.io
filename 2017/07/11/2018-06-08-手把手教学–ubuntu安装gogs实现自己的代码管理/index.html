@@ -16,14 +16,19 @@
 <meta name="keywords" content="Linux,git server,Ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to set up gogs git server on Ubuntu">
-<meta property="og:url" content="https://jitao90s.com/2018/06/08/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/index.html">
+<meta property="og:url" content="https://jitao90s.com/2017/07/11/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/index.html">
 <meta property="og:site_name" content="JITAO">
 <meta property="og:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   1.更新升级更新镜像源以及升级必要的已安装文件 12# sudo apt-get update# sudo apt-get upgrade 2.安装git，">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-07-05T05:02:27.697Z">
+<meta property="og:image" content="https://i.loli.net/2018/07/05/5b3dba81b7d71.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/05/5b3db89c07ac6.gif">
+<meta property="og:image" content="https://i.loli.net/2018/07/05/5b3db89c1cc35.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/05/5b3db9878eb37.png">
+<meta property="og:updated_time" content="2018-07-05T06:29:12.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to set up gogs git server on Ubuntu">
 <meta name="twitter:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   1.更新升级更新镜像源以及升级必要的已安装文件 12# sudo apt-get update# sudo apt-get upgrade 2.安装git，">
+<meta name="twitter:image" content="https://i.loli.net/2018/07/05/5b3dba81b7d71.png">
   
     <link rel="alternative" href="/atom.xml" title="JITAO" type="application/atom+xml">
   
@@ -138,7 +143,7 @@
   <section id="main">
     
     <h2 itemprop="name">
-      <a class="article-title" href="/2018/06/08/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/">How to set up gogs git server on Ubuntu</a>
+      <a class="article-title" href="/2017/07/11/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/">How to set up gogs git server on Ubuntu</a>
     </h2>
 
 
@@ -154,11 +159,11 @@
       <ul class="blog-info">
 	<li><i class="fa fa-user"></i> Ji Tao</li>
 	<li><i class="fa fa-calendar"></i>
-	  <time datetime="2018-06-07T16:00:00.000Z" itemprop="datePublished">2018/06/08</time>
+	  <time datetime="2017-07-10T16:00:00.000Z" itemprop="datePublished">2017/07/11</time>
 
 	</li>
 	<li class="hidden-xs"><i class="fa fa-comments"></i>
-	  <a href="https://jitao90s.com/2018/06/08/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/#disqus_thread" class="article-comment-link">Comments</a>
+	  <a href="https://jitao90s.com/2017/07/11/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/#disqus_thread" class="article-comment-link">Comments</a>
 	</li>
 	<li class="hidden-xs"><i class="fa fa-tags"></i> 
 	  
@@ -208,11 +213,14 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo apt-get install mysql-server </span><br><span class="line"><span class="meta">#</span> mysql --version</span><br></pre></td></tr></table></figure>
 <h2 id="3-添加系统新用户git"><a href="#3-添加系统新用户git" class="headerlink" title="3.添加系统新用户git"></a>3.添加系统新用户git</h2><p>注意这是系统的用户git，和安装的git是不同的东西，一个是用户名，一个是安装程序名称叫git。<strong>记住设置的git用户密码，我们需要使用git用户安装</strong> <em>gogs</em></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo adduser git</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/07/05/5b3dba81b7d71.png" alt="添加新用户git到ubuntu系统"></p>
 <h2 id="4-切换为git用户，获取二进制包并解压"><a href="#4-切换为git用户，获取二进制包并解压" class="headerlink" title="4.切换为git用户，获取二进制包并解压"></a>4.切换为git用户，获取二进制包并解压</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo su git</span><br><span class="line"><span class="meta">#</span> wget -c https://dl.gogs.io/0.11.19/linux_amd64.tar.gz</span><br><span class="line"><span class="meta">#</span> tar zxvf linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/07/05/5b3db89c07ac6.gif" alt="源码下载地址"></p>
 <h2 id="5-初始化mysql数据库"><a href="#5-初始化mysql数据库" class="headerlink" title="5.初始化mysql数据库"></a>5.初始化mysql数据库</h2><p>注意这里一定要注意路径的问题，便于能找到脚本执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mysql -u root -p &lt; mysql.sql</span><br></pre></td></tr></table></figure>
 <h2 id="6-建立需要使用的新用户名和新数据库"><a href="#6-建立需要使用的新用户名和新数据库" class="headerlink" title="6.建立需要使用的新用户名和新数据库"></a>6.建立需要使用的新用户名和新数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mysql -u root -p</span><br><span class="line"><span class="meta">&gt;</span> # （输入密码）</span><br><span class="line"><span class="meta">&gt;</span> create user 'gogs'@'localhost' identified by '密码';</span><br><span class="line"><span class="meta">&gt;</span> grant all privileges on gogs.* to 'gogs'@'localhost';</span><br><span class="line"><span class="meta">&gt;</span> flush privileges;</span><br><span class="line"><span class="meta">&gt;</span> exit;</span><br></pre></td></tr></table></figure>
-<h2 id="7-运行配置"><a href="#7-运行配置" class="headerlink" title="7.运行配置"></a>7.运行配置</h2><p>初次安装可以直接在安装的Ubuntu上打开浏览器输入<br><a href="http://localhost:3000/install" target="_blank" rel="noopener">http://localhost:3000/install</a><br>这样就能配置自己新建好的数据库账号密码，以及配置此代码管理系统的邮件服务，是否禁止自主注册，以及设定管理员账号</p>
+<h2 id="7-运行配置"><a href="#7-运行配置" class="headerlink" title="7.运行配置"></a>7.运行配置</h2><p>初次安装可以直接在安装的Ubuntu上打开浏览器输入<br><a href="http://localhost:3000/install" target="_blank" rel="noopener">http://localhost:3000/install</a><br>这样就能配置自己新建好的数据库账号密码，以及配置此代码管理系统的邮件服务，是否禁止自主注册，以及设定管理员账号<br><img src="https://i.loli.net/2018/07/05/5b3db89c1cc35.png" alt="初次安装配置界面"></p>
+<p><img src="https://i.loli.net/2018/07/05/5b3db9878eb37.png" alt="管理员设置界面"></p>
 <p>PS:记住install只有初次安装的时候才能进入。</p>
 <p>另外假如是源码安装，在文件夹中有个app.ini文件，那只是配置说明文件，真正的生效app.ini 在安装路径下的/home/git/gogs/custom/conf/app.ini</p>
 <p>更多查看—<a href="https://gogs.io/docs/advanced/configuration_cheat_sheet" target="_blank" rel="noopener">官方配置文档</a></p>
