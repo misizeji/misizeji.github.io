@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="JITAO">
 <meta property="og:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   1.更新升级更新镜像源以及升级必要的已安装文件 12# sudo apt-get update# sudo apt-get upgrade 2.安装git">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-07-05T03:59:19.623Z">
+<meta property="og:updated_time" content="2018-07-05T04:55:42.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to set up gogs git server on Ubuntu">
 <meta name="twitter:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   1.更新升级更新镜像源以及升级必要的已安装文件 12# sudo apt-get update# sudo apt-get upgrade 2.安装git">
@@ -213,9 +213,9 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mysql -u root -p &lt; mysql.sql</span><br></pre></td></tr></table></figure>
 <h2 id="6-建立需要使用的新用户名和新数据库"><a href="#6-建立需要使用的新用户名和新数据库" class="headerlink" title="6.建立需要使用的新用户名和新数据库"></a>6.建立需要使用的新用户名和新数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mysql -u root -p</span><br><span class="line"><span class="meta">&gt;</span> # （输入密码）</span><br><span class="line"><span class="meta">&gt;</span> create user 'gogs'@'localhost' identified by '密码';</span><br><span class="line"><span class="meta">&gt;</span> grant all privileges on gogs.* to 'gogs'@'localhost';</span><br><span class="line"><span class="meta">&gt;</span> flush privileges;</span><br><span class="line"><span class="meta">&gt;</span> exit;</span><br></pre></td></tr></table></figure>
 <h2 id="7-运行配置"><a href="#7-运行配置" class="headerlink" title="7.运行配置"></a>7.运行配置</h2><p>初次安装可以直接在安装的Ubuntu上打开浏览器输入<br><a href="http://localhost:3000/install" target="_blank" rel="noopener">http://localhost:3000/install</a><br>这样就能配置自己新建好的数据库账号密码，以及配置此代码管理系统的邮件服务，是否禁止自主注册，以及设定管理员账号</p>
-<blockquote>
-<p>PS:记住install只有初次安装的时候才能进入。<br>另外假如是源码安装，在文件夹中有个app.ini文件，那只是配置说明文件，真正的生效app.ini 在安装路径下的/home/git/gogs/custom/conf/app.ini<br>更多查看—<a href="https://gogs.io/docs/advanced/configuration_cheat_sheet" target="_blank" rel="noopener">官方配置文档</a></p>
-</blockquote>
+<p>PS:记住install只有初次安装的时候才能进入。</p>
+<p>另外假如是源码安装，在文件夹中有个app.ini文件，那只是配置说明文件，真正的生效app.ini 在安装路径下的/home/git/gogs/custom/conf/app.ini</p>
+<p>更多查看—<a href="https://gogs.io/docs/advanced/configuration_cheat_sheet" target="_blank" rel="noopener">官方配置文档</a></p>
 <h2 id="8-设置秘钥ssh访问"><a href="#8-设置秘钥ssh访问" class="headerlink" title="8.设置秘钥ssh访问"></a>8.设置秘钥ssh访问</h2><p>ssh秘钥访问很重要，能对你的代码传输进行加密处理，这样就不要配置https那样的麻烦。</p>
 <p>但是要注意的是，在仓库设置那里的部署ssh秘钥实际上是给第三方用户去获取代码的权限，并不能进行git push。<br>所以假如是自己进行git clone 然后修改commit 推送 git push的话，那就要设置个人用户设置那里的ssh秘钥。</p>
 <p>这里实际上英文的界面会显示得意思很恰当。</p>
