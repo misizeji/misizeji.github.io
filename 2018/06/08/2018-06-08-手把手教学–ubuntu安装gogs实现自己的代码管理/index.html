@@ -12,37 +12,18 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta name="description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件    安装git，mysql-server 安装git 并验证是否已经安装 git sudo apt-get">
+  <meta name="description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件12# sudo apt-get update# sudo apt-get upgrade  安装git，my">
 <meta name="keywords" content="Linux,git server,Ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to set up gogs git server on Ubuntu">
 <meta property="og:url" content="https://jitao90s.com/2018/06/08/2018-06-08-手把手教学–ubuntu安装gogs实现自己的代码管理/index.html">
 <meta property="og:site_name" content="JITAO">
-<meta property="og:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件    安装git，mysql-server 安装git 并验证是否已经安装 git sudo apt-get">
+<meta property="og:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件12# sudo apt-get update# sudo apt-get upgrade  安装git，my">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711160332844?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711160652437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711161104932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711161143541?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711161225676?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711161256038?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711161840166?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711162650350?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711162951881?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711162727316?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711163130707?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711163402735?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711164043649?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711164314061?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711164339600?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711164517687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711165727645?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170711165754704?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-06-11T05:14:25.332Z">
+<meta property="og:updated_time" content="2018-07-05T03:45:21.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to set up gogs git server on Ubuntu">
-<meta name="twitter:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件    安装git，mysql-server 安装git 并验证是否已经安装 git sudo apt-get">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170711160332844?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:description" content="安装其实很简单，总共分为以下几步：  更新升级 安装git，mysql-server 添加系统新用户git 切换为git用户 进行源二进制安装包获取解压 初始化mysql数据库 建立需要使用的新用户名和新数据库 运行配置 设置秘钥ssh访问   更新升级 更新镜像源以及升级必要的已安装文件12# sudo apt-get update# sudo apt-get upgrade  安装git，my">
   
     <link rel="alternative" href="/atom.xml" title="JITAO" type="application/atom+xml">
   
@@ -220,63 +201,35 @@
 </ul>
 <hr>
 <h2 id="更新升级"><a href="#更新升级" class="headerlink" title="更新升级"></a>更新升级</h2><blockquote>
-<p>更新镜像源以及升级必要的已安装文件</p>
+<p>更新镜像源以及升级必要的已安装文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo apt-get update</span><br><span class="line"><span class="meta">#</span> sudo apt-get upgrade</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20170711160332844?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="更新镜像源"></p>
-<p><img src="http://img.blog.csdn.net/20170711160652437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="升级已装文件"></p>
 <h2 id="安装git，mysql-server"><a href="#安装git，mysql-server" class="headerlink" title="安装git，mysql-server"></a>安装git，mysql-server</h2><blockquote>
-<p>安装git 并验证是否已经安装 git</p>
-<p>sudo apt-get intsall git<br>git –version</p>
+<p>安装git 并验证git的安装版本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo apt-get intsall git </span><br><span class="line"><span class="meta">#</span> git --version</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20170711161104932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="安装git"></p>
-<p><img src="http://img.blog.csdn.net/20170711161143541?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="验证git是否安装"></p>
 <blockquote>
-<p>安装mysql-server 并验证是否已经安装 mysql-server</p>
-<p>sudo apt-get install mysql-server<br>mysql –version</p>
+<p>安装mysql-server 并验证是否已经安装 mysql-server<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo apt-get install mysql-server </span><br><span class="line"><span class="meta">#</span> mysql --version</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20170711161225676?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="安装mysql"></p>
-<p><img src="http://img.blog.csdn.net/20170711161256038?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="验证mysql安装是否成功"></p>
 <h2 id="添加系统新用户git"><a href="#添加系统新用户git" class="headerlink" title="添加系统新用户git"></a>添加系统新用户git</h2><blockquote>
-<p>注意这是系统的用户git，和安装的git是不同的东西，一个是用户名，一个是安装程序git。<strong>记住设置的git用户密码，我们需要使用git用户安装</strong> <em>gogs</em></p>
+<p>注意这是系统的用户git，和安装的git是不同的东西，一个是用户名，一个是安装程序名称叫git。<strong>记住设置的git用户密码，我们需要使用git用户安装</strong> <em>gogs</em></p>
 </blockquote>
-<blockquote>
-<p>sudo adduser git</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo adduser git</span><br></pre></td></tr></table></figure>
+<h2 id="切换为git用户，获取二进制包并解压"><a href="#切换为git用户，获取二进制包并解压" class="headerlink" title="切换为git用户，获取二进制包并解压"></a>切换为git用户，获取二进制包并解压</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo su git</span><br><span class="line"><span class="meta">#</span> wget -c https://dl.gogs.io/0.11.19/linux_amd64.tar.gz</span><br><span class="line"><span class="meta">#</span> tar zxvf linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="初始化mysql数据库"><a href="#初始化mysql数据库" class="headerlink" title="初始化mysql数据库"></a>初始化mysql数据库</h2><blockquote>
+<p>注意这里一定要注意路径的问题，便于能找到脚本执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mysql -u root -p &lt; mysql.sql</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20170711161840166?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="添加系统用户git"></p>
-<p>##切换为git用户，获取二进制包并解压</p>
-<blockquote>
-<p>sudo su git<br>wget -c <a href="https://dl.gogs.io/0.11.19/linux_amd64.tar.gz" target="_blank" rel="noopener">https://dl.gogs.io/0.11.19/linux_amd64.tar.gz</a></p>
-</blockquote>
-<p><img src="http://img.blog.csdn.net/20170711162650350?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="切换git用户"></p>
-<p><img src="http://img.blog.csdn.net/20170711162951881?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="复制二进制安装包下载地址"></p>
-<p><img src="http://img.blog.csdn.net/20170711162727316?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="获取二进制安装包"></p>
-<p><img src="http://img.blog.csdn.net/20170711163130707?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="解压二进制包"></p>
-<p>##初始化mysql数据库</p>
-<blockquote>
-<p>注意这里一定要注意路径的问题，便于能找到脚本执行<br>mysql -u root -p &lt; mysql.sql</p>
-</blockquote>
-<p><img src="http://img.blog.csdn.net/20170711163402735?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="初始化数据库mysql"></p>
-<p>##建立需要使用的新用户名和新数据库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mysql -u root -p</span><br><span class="line"><span class="meta">&gt;</span> # （输入密码）</span><br><span class="line"><span class="meta">&gt;</span> create user 'gogs'@'localhost' identified by '密码';</span><br><span class="line"><span class="meta">&gt;</span> grant all privileges on gogs.* to 'gogs'@'localhost';</span><br><span class="line"><span class="meta">&gt;</span> flush privileges;</span><br><span class="line"><span class="meta">&gt;</span> exit;</span><br></pre></td></tr></table></figure></p>
-<p>##运行配置</p>
-<blockquote>
+<h2 id="建立需要使用的新用户名和新数据库"><a href="#建立需要使用的新用户名和新数据库" class="headerlink" title="建立需要使用的新用户名和新数据库"></a>建立需要使用的新用户名和新数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mysql -u root -p</span><br><span class="line"><span class="meta">&gt;</span> # （输入密码）</span><br><span class="line"><span class="meta">&gt;</span> create user 'gogs'@'localhost' identified by '密码';</span><br><span class="line"><span class="meta">&gt;</span> grant all privileges on gogs.* to 'gogs'@'localhost';</span><br><span class="line"><span class="meta">&gt;</span> flush privileges;</span><br><span class="line"><span class="meta">&gt;</span> exit;</span><br></pre></td></tr></table></figure>
+<h2 id="运行配置"><a href="#运行配置" class="headerlink" title="运行配置"></a>运行配置</h2><blockquote>
 <p>初次安装可以直接在安装的Ubuntu上打开浏览器输入<br><a href="http://localhost:3000/install" target="_blank" rel="noopener">http://localhost:3000/install</a><br>这样就能配置自己新建好的数据库账号密码，以及配置此代码管理系统的邮件服务，是否禁止自主注册，以及设定管理员账号</p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20170711164043649?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="初次运行配置"></p>
-<p><img src="http://img.blog.csdn.net/20170711164314061?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="邮箱服务"></p>
-<p><img src="http://img.blog.csdn.net/20170711164339600?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="联网及注册服务"></p>
-<p><img src="http://img.blog.csdn.net/20170711164517687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="设置管理员账号"></p>
 <blockquote>
 <p>PS:记住install只有初次安装的时候才能进入。<br>另外假如是源码安装，在文件夹中有个app.ini文件，那只是配置说明文件，真正的生效app.ini 在安装路径下的/home/git/gogs/custom/conf/app.ini<br>更多查看—<a href="https://gogs.io/docs/advanced/configuration_cheat_sheet" target="_blank" rel="noopener">官方配置文档</a></p>
 </blockquote>
-<p>##设置秘钥ssh访问</p>
-<blockquote>
+<h2 id="设置秘钥ssh访问"><a href="#设置秘钥ssh访问" class="headerlink" title="设置秘钥ssh访问"></a>设置秘钥ssh访问</h2><blockquote>
 <p>ssh秘钥访问很重要，能对你的代码传输进行加密处理，这样就不要配置https那样的麻烦。</p>
 <p>但是要注意的是，在仓库设置那里的部署ssh秘钥实际上是给第三方用户去获取代码的权限，并不能进行git push。</p>
 <p>所以假如是自己进行git clone 然后修改commit 推送 git push的话，那就要设置个人用户设置那里的ssh秘钥。</p>
 <p>这里实际上英文的界面会显示得意思很恰当。</p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20170711165727645?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="部署秘钥不能上传代码"></p>
-<p><img src="http://img.blog.csdn.net/20170711165754704?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTXJfX0c=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="个人设置"></p>
 <p><a href="https://gogs.io/" target="_blank" rel="noopener">gogs官网——用go语言写好的git代码服务器 (go git server)</a></p>
 
       
